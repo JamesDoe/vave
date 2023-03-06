@@ -5,46 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>    <title>Document</title>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex" rel="stylesheet">
+<title>Document</title>
     <style>
-       /* .mdc-card {
-  padding: 1em;
-  width: 150px;
-} */
-
-/* https://stackoverflow.com/questions/52647087/css-grid-avoid-before-and-after-in-grid */
-/* .mdc-card__media::after, .mdc-card__media::before{ display:none !important;} */
-
-/* 
-#app {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1em;
-    grid-auto-rows: 350px;
-} 
-*/
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 8px;
-  grid-auto-rows: auto;
+body {
+background-color: #ffeced;
+font-family: 'Roboto Flex', 'sans';
+font-size: 16px;
+  margin: 0;
+  padding: 1rem;
+color: #fffbff
 }
 
-.container > div > img {
-
-    border-radius: 12px;
+.masonry-with-flex {
+width: 320px;
+row-gap: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px;
 }
-
-.container > div {
-    background-color: #eee;
+.masonry-with-flex > div {
+background-color: #b02496;
+}
+.masonry-with-flex div {
   border-radius: 12px;
   /* padding: 16px; */
   box-sizing: border-box;
-  height: 242px;
+  height: 92px;
+  margin: 0 8px 8px 0;
   width: 150px;
   overflow: hidden;
+
+
+/*
+  width: 150px;
+  background: #EC985A;
+  color: white;
+  margin: 0 1rem 1rem 0;
+  text-align: center;
+  font-family: system-ui;
+  font-weight: 900;
+  font-size: 2rem;
+*/
 }
 
+
+
+
+
+.masonry-with-flex div > img {
+
+    border-radius: 12px;
+}
     </style>
 </head>
   <body>
@@ -58,21 +74,108 @@
 
     <div id="app">
       <!-- <my-card :artist="artist"></my-card> -->
-      <div>
-        <div class="container">
-            <div>bar</div>
-            <div><img src="150x150.png" alt=""></div>
-            <div>foo</div>
-            <div>baz</div>
-        </div>
-      </div>
+      <div class="masonry-with-flex">
+   <div v-for="artist in ARTISTS">
+    	<div style = "display: flex;" >
+    	<img style= "align-self: center; height: 150px; width: 150px;" :src="artist.thumbnail" alt="">
+  	</div>
+  </div>
+  <!--
+BE3450
+F58067
+F0CE9F
+7EBB75
+919D89
+<div>
+    	<div style="display: flex;">
+    	<img style="align-self: center;  height: 150px; width: 150px;" src="1441922956_Sho_Flacco2.jpg" alt="">
+  	</div>
+  </div>-->
+  <div style="height: 242px">
+    	<div style="display: flex; flex-direction: column; height: 242px">
+    		<img style="height: 150px; width: 150px;" src="1441922956_Sho_Flacco2.jpg" alt="">
+  	<div style="font-weight: 500; box-sizing: border-box; padding:8px 0 0 16px; margin: 0; line-height: 24px; height: 24px; overflow: unset; letter-spacing: .15px">Sho Flacco</div>
+<!-- 
+https://stackoverflow.com/questions/8837050/allow-specific-tag-to-override-overflowhidden 
+https://medium.com/@thomas.sameshima/css-overriding-the-parents-overflow-hidden-90c75a0e7296
+-->
+<div style="box-sizing: border-box; padding-left:16px; letter-spacing: .25px; margin: 0; height: 20px; line-height: 20px; font-size: 14px;">Norfolk</div>
+
+
+<!-- <div style="box-sizing: border-box; height: 42px;">
+<object data="twitter-6.svg" style="padding-left: 16px; height: 36px; width:36px" type="image/svg+xml"></object>
+<object data="Instagram_Glyph_Gradient_RGB.svg" style="padding-left: 8px; height: 36px; width:36px" type="image/svg+xml"></object>
+<object data="youtube-3.svg" style="padding-left: 8px; height: 36px; width:36px" type="image/svg+xml"></object>
+</div> -->
+<div style="height: 36px; display: flex; padding-left: 16px;">
+<div style=" width:36px"><img style="width:36px" src="music.png" /></div>
+<div style="width:36px"><img style="width:36px" src="film.png" /></div>
+</div>
+
+
+	</div>
+
+
+
+  </div>
+  <div>
+    4
+  </div>
+  <!-- <div>
+    5
+  </div>
+  <div>
+    6
+  </div>
+  <div>
+    7
+  </div>
+  <div>
+    8
+  </div>
+  <div>
+    9
+  </div>
+  <div>
+    10
+  </div>
+  <div>
+    11
+  </div>
+  <div>
+    12
+  </div>
+  <div>
+    13
+  </div>
+  <div>
+    14
+  </div>
+  <div>
+    15
+  </div>-->
+</div>
     </div>
     <script>
+const ARTISTS = [
+/*
+{
+name:'FooBar',
+origin: 'Chesapeake',
+disciplines: ['painting', 'sculpture']
+},*/
+{
+name:'Tracielynn',
+origin: 'Hampton Roads',
+thumbnail: 'Tracielynn-2.jpg',
+disciplines: ['music']
+},
+];
       const DISCPLINES = [
         'painting',
         'sculpture',
         'architecture',
-        'poetry',
+        'film',
         'music',
         'literature',
         'dance',
@@ -140,6 +243,7 @@
         },
         data() {
           return {
+		ARTISTS,
             DISCPLINES,
             CITIES,
             artist: {
